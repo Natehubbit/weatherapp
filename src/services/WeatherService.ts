@@ -2,7 +2,7 @@ import axios from 'axios'
 import { WeatherInfo } from '../types'
 import UtilServices from './UtilService'
 
-const URL = 'http://api.openweathermap.org/data/2.5/forecast'
+const URL = 'https://api.openweathermap.org/data/2.5/forecast'
 
 export default class WeatherService {
   static async getData(): Promise<WeatherInfo[] | null> {
