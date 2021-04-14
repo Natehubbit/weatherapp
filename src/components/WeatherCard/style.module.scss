@@ -36,3 +36,17 @@
     transform: scale(1.03);
   }
 }
+
+@media (max-width: 768px) {
+  .grid{
+    .container {
+      .content {
+        .item{
+          .value{
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

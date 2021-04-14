@@ -21,13 +21,20 @@
     height: 100%;
     width: 100%;
     .graph {
-      min-width: 100px;
       color: $white;
       .xAxis {
         color: $white;
         stroke: $white;
         fill: $white;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .graphContainer {
+    .graph {
+      font-size: 15px;
     }
   }
 }
