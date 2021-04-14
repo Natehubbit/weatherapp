@@ -9,12 +9,12 @@ import MockService from '../../../services/MockService'
 
 MockService.initialize()
 
-describe('<NavButtons/>',()=>{
-  it('renders right button only when item is on next page.',async()=>{
+describe('<NavButtons/>', () => {
+  it('renders right button only when item is on next page.', async () => {
     const onClick = jest.fn()
     const { data } = await axios.get('/weather')
     store.dispatch(weatherActions.getData(data))
-    const {getByRole,queryByRole} = render(
+    const { getByRole, queryByRole } = render(
       <Provider store={store}>
         <NavButtons
           onNext={onClick}
@@ -27,7 +27,7 @@ describe('<NavButtons/>',()=>{
     expect(rightBtn).toBeTruthy()
     expect(queryByRole('left')).toBeNull()
   })
-  it('renders left button only when an item is on previous page and not the next',async()=>{
+  it('renders left button only when an item is on previous page and not the next', async () => {
     const onClick = jest.fn()
     const { data } = await axios.get('/weather')
     store.dispatch(weatherActions.getData(data))
@@ -43,7 +43,7 @@ describe('<NavButtons/>',()=>{
     expect(queryByRole('left')).toBeTruthy()
     expect(queryByRole('right')).toBeNull()
   })
-  it('renders none of the buttons whe page size is 1',async()=>{
+  it('renders none of the buttons whe page size is 1', async () => {
     const onClick = jest.fn()
     const { data } = await axios.get('/weather')
     store.dispatch(weatherActions.getData(data))

@@ -11,10 +11,10 @@ const useGraph = (date:number|null) => {
   useEffect(() => {
     if (date) {
       const graphData = UtilServices
-        .formatGraphData(date,data,unitOfMeasure)
+        .formatGraphData(date, data, unitOfMeasure)
       graphData && setGraph(graphData)
     }
-  }, [date,unitOfMeasure,data])
+  }, [date, unitOfMeasure, data])
   return {
     graph
   }

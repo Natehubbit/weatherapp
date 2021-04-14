@@ -7,8 +7,8 @@ import MockService from '../../../services/MockService'
 
 MockService.initialize()
 
-describe('<RadioGroup/>',()=>{
-  it('renders radio buttons and clicks on them',async ()=>{
+describe('<RadioGroup/>', () => {
+  it('renders radio buttons and clicks on them', async () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <RadioGroup
@@ -16,11 +16,11 @@ describe('<RadioGroup/>',()=>{
         />
       </Provider>)
     Object.keys(TEMPERATURE_OPTIONS)
-      .forEach((k)=>{
+      .forEach((k) => {
         const key = k as keyof typeof TEMPERATURE_OPTIONS
         const btn = getByTestId(key)
         fireEvent.click(btn)
-        const {temperature} = store.getState()
+        const { temperature } = store.getState()
         expect(temperature).toBe(k.toLowerCase())
       })
   })

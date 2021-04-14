@@ -1,16 +1,16 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TempMeasure } from "../../types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { TempMeasure } from '../../types'
 
 const initialState = 'fahrenheit'
 
 export const { actions, ...tempSlice } = createSlice({
-  name:'temperature',
+  name: 'temperature',
   initialState,
   reducers: {
-    setMeasure(
+    setMeasure (
       _,
-      {payload}: PayloadAction<TempMeasure>
-    ): TempMeasure{
+      { payload }: PayloadAction<TempMeasure>
+    ): TempMeasure {
       return payload
     }
   }

@@ -9,7 +9,6 @@ import cx from 'classnames/bind'
 import useTemp from '../../hooks/useTemp'
 import UtilServices from '../../services/UtilService'
 
-
 const cn = cx.bind(styles)
 
 interface IWeatherCard {
@@ -27,38 +26,38 @@ const WeatherCard: FC<IWeatherCard> = ({
   activeId,
   onClick
 }) => {
-  const {tempVal,unitOfMeasure} = useTemp(temp)
+  const { tempVal, unitOfMeasure } = useTemp(temp)
   return (
     <Grid
       key={uuid()}
-      item xs={12} 
+      item xs={12}
       sm={6} lg={4}
       className={cn({
-        grid:true
+        grid: true
       })}
     >
         <Card
           data-testid='weatherCard'
           className={cn({
-            container:true,
-            grid:true,
-            active: activeId===id
-          })} 
-          onClick={onClick}> 
-          <CardContent className={styles['content']}>
-            <div className={styles['item']}>
-              <Typography className={styles['head']} component='header'>
+            container: true,
+            grid: true,
+            active: activeId === id
+          })}
+          onClick={onClick}>
+          <CardContent className={styles.content}>
+            <div className={styles.item}>
+              <Typography className={styles.head} component='header'>
                 TEMP
               </Typography>
-              <Typography className={styles['value']} component='span'>
+              <Typography className={styles.value} component='span'>
                 {tempVal}{unitOfMeasure}
               </Typography>
             </div>
-            <div className={styles['item']}>
-              <Typography className={styles['head']} component='header'>
+            <div className={styles.item}>
+              <Typography className={styles.head} component='header'>
                 DATE
               </Typography>
-              <Typography className={styles['value']} component='span'>
+              <Typography className={styles.value} component='span'>
                 {UtilServices.getDate(date)}
               </Typography>
             </div>

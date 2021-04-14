@@ -10,14 +10,14 @@ export default class WeatherService {
       const res = await axios.get(
         URL,
         {
-          params:{
-            q:'Munich,de',
+          params: {
+            q: 'Munich,de',
             cnt: 40,
             APPID: process.env.REACT_APP_WEATHER_API_ID
           }
         }
       )
-      return res.data.list.map((d:any)=>{
+      return res.data.list.map((d:any) => {
         return {
           id: d.dt,
           dt_txt: d.dt_txt,

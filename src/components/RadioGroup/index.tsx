@@ -28,14 +28,14 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     dispatch(tempActions.setMeasure(value.toLowerCase() as TempMeasure))
   }
   return (
-    <ButtonGroup data-testid='radioGroup' className={styles['container']}>
+    <ButtonGroup data-testid='radioGroup' className={styles.container}>
       {Object.keys(options).map(k => {
         const isActive = activeBtn === k
         const Icon: FC<React.SVGProps<SVGSVGElement>> = options[k]
         return <Btn
           data-testid={k}
           key={uuid()}
-          startIcon={<Icon className={styles['icon']} />}
+          startIcon={<Icon className={styles.icon} />}
           onClick={() => onClick(k)}
           className={cn({ active: isActive }, 'btn')}
         >

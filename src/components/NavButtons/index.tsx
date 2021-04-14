@@ -21,20 +21,20 @@ const NavButtons: FC<NavButtonsProps> = ({
   return (
     <Grid
       container
-      className={styles['container']}
+      className={styles.container}
     >
       <Grid
         item
       >
-        {!startOfList&&<Fab role='left' onClick={onPrev} classes={{label:styles['label']}} className={styles['fab']}>
-          <ArrowLeft className={styles['icon']} />
+        {!startOfList && <Fab role='left' onClick={onPrev} classes={{ label: styles.label }} className={styles.fab}>
+          <ArrowLeft className={styles.icon} />
         </Fab>}
       </Grid>
       <Grid
         item
       >
-        {!endOfList&&<Fab role='right' onClick={onNext} classes={{label:styles['label']}} className={styles['fab']}>
-          <ArrowRight className={styles['icon']} />
+        {!endOfList && <Fab role='right' onClick={onNext} classes={{ label: styles.label }} className={styles.fab}>
+          <ArrowRight className={styles.icon} />
         </Fab>}
       </Grid>
     </Grid>

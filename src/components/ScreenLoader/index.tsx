@@ -22,18 +22,18 @@ const ScreenLoader: FC<IScreenLoader> = () => {
   return (
     <Modal
       disableBackdropClick
-      className={styles['container']}
+      className={styles.container}
       open={loading}
       role='modal'
       onClose={onClose} >
-      <div className={styles['content']}>
+      <div className={styles.content}>
         <Box m={2}>
           <CircularProgress
             size='3rem'
             variant='indeterminate' />
         </Box>
         <Box>
-          <Typography component='h1'  >
+          <Typography component='h1' >
             Loading weather data...
           </Typography>
         </Box>

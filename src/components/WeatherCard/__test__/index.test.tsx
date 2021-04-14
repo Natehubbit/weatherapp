@@ -1,25 +1,22 @@
-import { cleanup, fireEvent, render } from "@testing-library/react"
-import axios from "axios"
-import { Provider } from "react-redux"
-import { rest } from 'msw'
-import { setupServer } from 'msw/node'
-import WeatherCard from ".."
-import { TEST_RESPONSE_DATA } from "../../../common/constants"
-import { store } from "../../../redux/store"
-import { weatherActions } from "../../../redux/slices/weatherSlice"
-import { WeatherInfo } from "../../../types"
-import MockService from "../../../services/MockService"
+import { fireEvent, render } from '@testing-library/react'
+import axios from 'axios'
+import { Provider } from 'react-redux'
+import WeatherCard from '..'
+import { store } from '../../../redux/store'
+import { weatherActions } from '../../../redux/slices/weatherSlice'
+import { WeatherInfo } from '../../../types'
+import MockService from '../../../services/MockService'
 
 MockService.initialize()
 
-describe('<WeatherCard />',()=>{
-  it('renders and clicks on card',async ()=>{
-    const {data}:{data:WeatherInfo[]} = await axios.get('/weather')
-    const {id} = data[0]
+describe('<WeatherCard />', () => {
+  it('renders and clicks on card', async () => {
+    const { data }:{data:WeatherInfo[]} = await axios.get('/weather')
+    const { id } = data[0]
     store.dispatch(weatherActions.getData(data))
     const { getByTestId } = render(
       <Provider store={store}>
-        <WeatherCard 
+        <WeatherCard
           date={data[0].dt_txt}
           id={data[0].id}
           activeId={id}

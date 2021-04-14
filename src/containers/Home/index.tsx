@@ -19,77 +19,77 @@ const Home = () => {
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(3)
   const [active, setActive] = useState<number|null>(null)
-  const {data,size,endOfList} = useWeatherData(start,end)
+  const { data, size, endOfList } = useWeatherData(start, end)
 
   useEffect(() => {
     dispatch(weatherActions.fetchData())
   }, [dispatch])
 
-  const onNext =() => {
-    setStart(s=>{
-      if(s>=size-3){
+  const onNext = () => {
+    setStart(s => {
+      if (s >= size - 3) {
         return s
       }
-      return s+3
+      return s + 3
     })
-    setEnd(e=>{
-      if(e>size-1){
+    setEnd(e => {
+      if (e > size - 1) {
         return e
       }
-      return e+3
+      return e + 3
     })
   }
   const onPrev = () => {
-    setStart(s=>{
-      if (s<=0){
+    setStart(s => {
+      if (s <= 0) {
         return s
       }
-      return s-3
+      return s - 3
     })
-    setEnd(e=>{
-      if(e<=3){
+    setEnd(e => {
+      if (e <= 3) {
         return e
       }
-      return e-3
+      return e - 3
     })
   }
   const onSelectCard = (id:number) => {
-    if(id===active){
+    if (id === active) {
       return setActive(null)
     }
     return setActive(id)
   }
   return (
-    <div className={styles['container']}>
+    <div className={styles.container}>
       <Container>
-        <Box 
-          display='flex' 
+        <Box
+          display='flex'
           justifyContent='center'
           paddingY={5}>
-          <RadioGroup 
+          <RadioGroup
             active={Object
-              .keys(TEMPERATURE_OPTIONS)[1]} 
+              .keys(TEMPERATURE_OPTIONS)[1]}
             options={TEMPERATURE_OPTIONS}/>
         </Box>
-        <NavButtons 
-          onNext={onNext} 
-          onPrev={onPrev} 
-          endOfList={endOfList} 
-          startOfList={start===0}
+        <NavButtons
+          onNext={onNext}
+          onPrev={onPrev}
+          endOfList={endOfList}
+          startOfList={start === 0}
           />
-        <Grid 
+        <Grid
           container
           spacing={3}
-          className={styles['cardList']}
+          className={styles.cardList}
         >
-          {data.map((d:WeatherInfo)=>
+          {data.map((d:WeatherInfo) =>
             <WeatherCard
               id={d.id}
               activeId={active}
               key={uuid()}
               date={d?.dt_txt}
               temp={d?.temp}
-              onClick={()=>onSelectCard(d.id)}
+              onClick={() => onSelectCard(d.id)}
             />)}
         </Grid>
         <Grid

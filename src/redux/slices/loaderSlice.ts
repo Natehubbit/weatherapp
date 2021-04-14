@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: boolean = false
 
 export const { actions, ...loaderSlice } = createSlice({
-  name:'loader',
+  name: 'loader',
   initialState,
   reducers: {
-    loading(){
+    loading () {
       return true
     },
-    loaded(){
+    loaded () {
       return false
-    } 
+    }
   }
 })
 

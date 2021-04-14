@@ -1,17 +1,17 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 import Graph from '..'
 import { Provider } from 'react-redux'
-import { store } from '../../../redux/store';
+import { store } from '../../../redux/store'
 import axios from 'axios'
-import { weatherActions } from '../../../redux/slices/weatherSlice';
-import MockService from '../../../services/MockService';
+import { weatherActions } from '../../../redux/slices/weatherSlice'
+import MockService from '../../../services/MockService'
 
 MockService.initialize()
 
 describe('<Graph/>', () => {
-  it("renders without crashing when weather card is not selected", () => {
+  it('renders without crashing when weather card is not selected', () => {
     const date = null
-    const { getByTestId,queryByTestId } = render(
+    const { getByTestId, queryByTestId } = render(
       <Provider store={store}>
         <Graph date={date} />
       </Provider>)
@@ -20,7 +20,6 @@ describe('<Graph/>', () => {
     expect(noData).toBeInTheDocument()
     expect(graph).toBeNull()
   })
-
 
   it('renders graph data when weather card has been selected', async () => {
     const date = 1618250400
