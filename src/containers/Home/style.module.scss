@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  color: white;
+  min-height: 100vh;
+  background-image: url('../../assets/images/ethan-weil--_edxRu4jh0-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  .cardList {
+    margin-bottom: 25px;
+  }
+  .radio {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../theme/variables';
+
+.container {
+  background: rgba( 0, 0, 0, 0.25 )!important;
+  backdrop-filter: blur( 20.5px );
+  -webkit-backdrop-filter: blur( 20.5px );
+  .content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+  }
+}

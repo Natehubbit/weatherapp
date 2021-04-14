@@ -1,0 +1,23 @@
+@import '../../theme/variables';
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 25px;
+  .fab {
+    background-color: rgba($color: $dark, $alpha: 0.4);
+    color: $white;
+    overflow: hidden;
+    :hover{
+      background-color: $primary;
+    }
+    .icon {
+      height: 40px;
+      width: 40px;
+    }
+  }
+  .label {
+    height: 100%;
+  }
+}
