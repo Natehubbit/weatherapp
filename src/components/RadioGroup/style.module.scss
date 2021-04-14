@@ -2,6 +2,7 @@
 
 .container {
   border-radius: 100px;
+  background-color: $white;
   .btn {
     border: none;
     font-size: 1.2rem;
@@ -17,7 +18,7 @@
       width: 20px;
       border-radius: 0;
       margin-right: 10px;
-      fill: grey;
+      fill: $grey;
     }
     &.active {
       background-color: $primary;
