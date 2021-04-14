@@ -12,35 +12,40 @@ const cn = cx.bind(styles)
 
 interface RadioGroupProps {
   options: {
-    [key: string]: FC<SVGProps<SVGSVGElement>>;
-  };
-  active?: string;
+    [key: string]: FC<SVGProps<SVGSVGElement>>
+  }
+  active?: string
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({
-  options,
-  active
-}) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ options, active }) => {
   const dispatch = useDispatch()
-  const [activeBtn, setActiveBtn] = useState<string>(active || Object.keys(options)[0])
+  const [activeBtn, setActiveBtn] = useState<string>(
+    active || Object.keys(options)[0]
+  )
   const onClick = (value: string) => {
     setActiveBtn(value)
     dispatch(tempActions.setMeasure(value.toLowerCase() as TempMeasure))
   }
   return (
-    <ButtonGroup data-testid='radioGroup' className={styles.container}>
-      {Object.keys(options).map(k => {
+    <ButtonGroup data-testid="radioGroup" className={styles.container}>
+      {Object.keys(options).map((k) => {
         const isActive = activeBtn === k
         const Icon: FC<React.SVGProps<SVGSVGElement>> = options[k]
-        return <Btn
-          data-testid={k}
-          key={uuid()}
-          startIcon={<Icon className={styles.icon} />}
-          onClick={() => onClick(k)}
-          className={cn({ active: isActive }, 'btn')}
-        >
-          {k}
-        </Btn>
+        return (
+          <Btn
+            data-testid={k}
+            key={uuid()}
+            startIcon={<Icon className={styles.icon} />}
+            onClick={() => onClick(k)}
+            className={cn(
+              {
+                active: isActive
+              },
+              'btn'
+            )}>
+            {k}
+          </Btn>
+        )
       })}
     </ButtonGroup>
   )

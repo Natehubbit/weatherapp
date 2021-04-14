@@ -22,7 +22,8 @@ describe('<NavButtons/>', () => {
           endOfList={false}
           startOfList={true}
         />
-      </Provider>)
+      </Provider>
+    )
     const rightBtn = getByRole('right')
     expect(rightBtn).toBeTruthy()
     expect(queryByRole('left')).toBeNull()
@@ -39,7 +40,8 @@ describe('<NavButtons/>', () => {
           endOfList={true}
           startOfList={false}
         />
-      </Provider>)
+      </Provider>
+    )
     expect(queryByRole('left')).toBeTruthy()
     expect(queryByRole('right')).toBeNull()
   })
@@ -55,7 +57,8 @@ describe('<NavButtons/>', () => {
           endOfList={true}
           startOfList={true}
         />
-      </Provider>)
+      </Provider>
+    )
     expect(queryByRole('left')).toBeNull()
     expect(queryByRole('right')).toBeNull()
   })

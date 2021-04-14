@@ -5,7 +5,7 @@ import { setupServer } from 'msw/node'
 import { TEST_RESPONSE_DATA } from '../common/constants'
 
 export default class MockService {
-  static initialize () {
+  static initialize() {
     const server = setupServer(
       rest.get('/weather', (_, res, ctx) => {
         return res(ctx.json(TEST_RESPONSE_DATA))

@@ -1,5 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { TypedUseSelectorHook, useDispatch as useAppDispatch, useSelector as useAppselector } from 'react-redux'
+import {
+  TypedUseSelectorHook,
+  useDispatch as useAppDispatch,
+  useSelector as useAppselector
+} from 'react-redux'
 import { loaderSlice } from '../slices/loaderSlice'
 import { weatherSlice } from '../slices/weatherSlice'
 import { tempSlice } from '../slices/temperatureSlice'

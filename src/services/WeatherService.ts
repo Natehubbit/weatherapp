@@ -5,19 +5,16 @@ import UtilServices from './UtilService'
 const URL = 'http://api.openweathermap.org/data/2.5/forecast'
 
 export default class WeatherService {
-  static async getData (): Promise<WeatherInfo[]|null> {
+  static async getData(): Promise<WeatherInfo[] | null> {
     try {
-      const res = await axios.get(
-        URL,
-        {
-          params: {
-            q: 'Munich,de',
-            cnt: 40,
-            APPID: process.env.REACT_APP_WEATHER_API_ID
-          }
+      const res = await axios.get(URL, {
+        params: {
+          q: 'Munich,de',
+          cnt: 40,
+          APPID: process.env.REACT_APP_WEATHER_API_ID
         }
-      )
-      return res.data.list.map((d:any) => {
+      })
+      return res.data.list.map((d: any) => {
         return {
           id: d.dt,
           dt_txt: d.dt_txt,

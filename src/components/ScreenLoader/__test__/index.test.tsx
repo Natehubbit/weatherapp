@@ -5,22 +5,15 @@ import { loaderActions } from '../../../redux/slices/loaderSlice'
 import { store } from '../../../redux/store'
 
 describe('<ScreenLoader/>', () => {
-  it('renders without crashing when loading', () => {
-    store.dispatch(loaderActions.loading())
-    const { getByText } = render(
-      <Provider store={store} >
-        <ScreenLoader/>
-      </Provider>
-    )
-    expect(getByText('Loading weather data...')).toBeInTheDocument()
-  })
-  it('does not render when data is done loading', async () => {
+  it('renders when loading and disappears when loaded', async () => {
     store.dispatch(loaderActions.loading())
     const { queryByRole } = render(
-      <Provider store={store} >
-        <ScreenLoader/>
+      <Provider store={store}>
+        <ScreenLoader />
       </Provider>
     )
+    expect(queryByRole('modal')).toBeTruthy()
+
     store.dispatch(loaderActions.loaded())
     const { loader } = store.getState()
     expect(loader).toBe(false)

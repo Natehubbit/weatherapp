@@ -2,31 +2,31 @@ import moment from 'moment'
 import { GraphData, TempMeasure, WeatherInfo } from '../types'
 
 export default class UtilServices {
-  static kelvinToFahrenheit (val:number) {
+  static kelvinToFahrenheit(val: number) {
     return (val - 273.1) * 9.5 + 32
   }
 
-  static convertToCelsius (val: number) {
+  static convertToCelsius(val: number) {
     return val ? (val - 32) / 1.8 : 0
   }
 
-  static convertToFahrenheit (val: number) {
+  static convertToFahrenheit(val: number) {
     return val ? val * 1.8 + 32 : 0
   }
 
-  static formatUnixDate (dt: number) {
+  static formatUnixDate(dt: number) {
     return moment.unix(dt).format('DD MMMM YYYY')
   }
 
-  static getDate (date: string) {
+  static getDate(date: string) {
     return moment(date).format('ddd, MMM DD')
   }
 
-  static getTime (date:number) {
+  static getTime(date: number) {
     return moment.unix(date).format('hh:mm')
   }
 
-  static formatCardData (data: WeatherInfo[]) {
+  static formatCardData(data: WeatherInfo[]) {
     try {
       let accIdx = 0
       const refinedData: WeatherInfo[] = []
@@ -50,9 +50,7 @@ export default class UtilServices {
         }, data[0])
         return refinedData.map((refData) => {
           const { length } = data.filter(
-            (d) =>
-              this.getDate(d.dt_txt) ===
-              this.getDate(refData.dt_txt)
+            (d) => this.getDate(d.dt_txt) === this.getDate(refData.dt_txt)
           )
           return {
             ...refData,
@@ -67,18 +65,21 @@ export default class UtilServices {
     }
   }
 
-  static formatGraphData (
+  static formatGraphData(
     id: number | null,
     data: WeatherInfo[],
     unitOfMeasure: TempMeasure
-  ): GraphData[]|null {
+  ): GraphData[] | null {
     try {
-      if (!data || !id) throw new Error('No data available')
+      if (!data || !id) {
+        throw new Error('No data available')
+      }
       const date = this.formatUnixDate(id)
-      const filtered = data.filter((d) => UtilServices
-        .formatUnixDate(d.id) === date)
+      const filtered = data.filter(
+        (d) => UtilServices.formatUnixDate(d.id) === date
+      )
       const isCelsius = unitOfMeasure === 'celsius'
-      return filtered.map(d => {
+      return filtered.map((d) => {
         const val = isCelsius
           ? UtilServices.convertToCelsius(d.temp)
           : UtilServices.convertToFahrenheit(d.temp)

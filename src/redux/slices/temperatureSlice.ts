@@ -7,10 +7,7 @@ export const { actions, ...tempSlice } = createSlice({
   name: 'temperature',
   initialState,
   reducers: {
-    setMeasure (
-      _,
-      { payload }: PayloadAction<TempMeasure>
-    ): TempMeasure {
+    setMeasure(_, { payload }: PayloadAction<TempMeasure>): TempMeasure {
       return payload
     }
   }

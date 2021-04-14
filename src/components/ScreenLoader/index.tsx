@@ -8,8 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import { loaderActions } from '../../redux/slices/loaderSlice'
 
-interface IScreenLoader {
-}
+interface IScreenLoader {}
 
 const ScreenLoader: FC<IScreenLoader> = () => {
   const dispatch = useDispatch()
@@ -24,18 +23,18 @@ const ScreenLoader: FC<IScreenLoader> = () => {
       disableBackdropClick
       className={styles.container}
       open={loading}
-      role='modal'
-      onClose={onClose} >
+      role="modal"
+      onClose={onClose}>
       <div className={styles.content}>
         <Box m={2}>
           <CircularProgress
-            size='3rem'
-            variant='indeterminate' />
+            // color={COLORS.primary}
+            size="3rem"
+            variant="indeterminate"
+          />
         </Box>
         <Box>
-          <Typography component='h1' >
-            Loading weather data...
-          </Typography>
+          <Typography component="h1">Loading weather data...</Typography>
         </Box>
       </div>
     </Modal>

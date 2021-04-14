@@ -18,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch()
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(3)
-  const [active, setActive] = useState<number|null>(null)
+  const [active, setActive] = useState<number | null>(null)
   const { data, size, endOfList } = useWeatherData(start, end)
 
   useEffect(() => {
@@ -26,13 +26,13 @@ const Home = () => {
   }, [dispatch])
 
   const onNext = () => {
-    setStart(s => {
+    setStart((s) => {
       if (s >= size - 3) {
         return s
       }
       return s + 3
     })
-    setEnd(e => {
+    setEnd((e) => {
       if (e > size - 1) {
         return e
       }
@@ -40,20 +40,20 @@ const Home = () => {
     })
   }
   const onPrev = () => {
-    setStart(s => {
+    setStart((s) => {
       if (s <= 0) {
         return s
       }
       return s - 3
     })
-    setEnd(e => {
+    setEnd((e) => {
       if (e <= 3) {
         return e
       }
       return e - 3
     })
   }
-  const onSelectCard = (id:number) => {
+  const onSelectCard = (id: number) => {
     if (id === active) {
       return setActive(null)
     }
@@ -62,41 +62,37 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Container>
-        <Box
-          display='flex'
-          justifyContent='center'
-          paddingY={5}>
+        <Box display="flex" justifyContent="center" paddingY={5}>
           <RadioGroup
-            active={Object
-              .keys(TEMPERATURE_OPTIONS)[1]}
-            options={TEMPERATURE_OPTIONS}/>
-        </Box>
-        <NavButtons
-          onNext={onNext}
-          onPrev={onPrev}
-          endOfList={endOfList}
-          startOfList={start === 0}
+            active={Object.keys(TEMPERATURE_OPTIONS)[1]}
+            options={TEMPERATURE_OPTIONS}
           />
-        <Grid
-          container
-          spacing={3}
-          className={styles.cardList}
-        >
-          {data.map((d:WeatherInfo) =>
-            <WeatherCard
-              id={d.id}
-              activeId={active}
-              key={uuid()}
-              date={d?.dt_txt}
-              temp={d?.temp}
-              onClick={() => onSelectCard(d.id)}
-            />)}
-        </Grid>
-        <Grid
-          container
-        >
-          <Graph date={active} />
-        </Grid>
+        </Box>
+        <Box paddingY={5}>
+          <NavButtons
+            onNext={onNext}
+            onPrev={onPrev}
+            endOfList={endOfList}
+            startOfList={start === 0}
+          />
+        </Box>
+        <Box paddingY={5}>
+          <Grid container spacing={3} className={styles.cardList}>
+            {data.map((d: WeatherInfo) => (
+              <WeatherCard
+                id={d.id}
+                activeId={active}
+                key={uuid()}
+                date={d?.dt_txt}
+                temp={d?.temp}
+                onClick={() => onSelectCard(d.id)}
+              />
+            ))}
+          </Grid>
+          <Grid container>
+            <Graph date={active} />
+          </Grid>
+        </Box>
       </Container>
     </div>
   )

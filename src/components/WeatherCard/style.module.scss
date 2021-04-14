@@ -2,9 +2,9 @@
 
 .grid {
   .container {
-    background: rgba( 0, 0, 0, 0.25 )!important;
-    backdrop-filter: blur( 20.5px );
-    -webkit-backdrop-filter: blur( 20.5px );
+    background: rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: blur(20.5px);
+    -webkit-backdrop-filter: blur(20.5px);
     cursor: pointer;
     backface-visibility: hidden;
     transform: perspective(1px) translateZ(0);
@@ -29,10 +29,10 @@
   }
 }
 @keyframes select {
-  from{
-    transform:scale(1)
+  from {
+    transform: scale(1);
   }
-  to{
-    transform:scale(1.03)
+  to {
+    transform: scale(1.03);
   }
 }

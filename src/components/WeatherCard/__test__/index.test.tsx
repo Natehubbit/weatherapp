@@ -11,7 +11,11 @@ MockService.initialize()
 
 describe('<WeatherCard />', () => {
   it('renders and clicks on card', async () => {
-    const { data }:{data:WeatherInfo[]} = await axios.get('/weather')
+    const {
+      data
+    }: {
+      data: WeatherInfo[]
+    } = await axios.get('/weather')
     const { id } = data[0]
     store.dispatch(weatherActions.getData(data))
     const { getByTestId } = render(

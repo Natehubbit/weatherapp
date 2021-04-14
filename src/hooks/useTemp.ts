@@ -3,25 +3,19 @@ import { useSelector } from '../redux/store'
 import UtilServices from '../services/UtilService'
 import { TempMeasure } from '../types'
 
-const useTemp = (temperature:number) => {
-  const unitOfMeasure = useSelector(state => state.temperature as TempMeasure)
+const useTemp = (temperature: number) => {
+  const unitOfMeasure = useSelector((state) => state.temperature as TempMeasure)
   const [temp, setTemp] = useState(temperature)
   useEffect(() => {
     if (unitOfMeasure === 'celsius') {
-      setTemp(
-        UtilServices.convertToCelsius(temperature)
-      )
+      setTemp(UtilServices.convertToCelsius(temperature))
     } else {
-      setTemp(
-        temperature
-      )
+      setTemp(temperature)
     }
   }, [temperature, unitOfMeasure])
   return {
     tempVal: Math.ceil(temp),
-    unitOfMeasure: unitOfMeasure === 'celsius'
-      ? 'C'
-      : 'F'
+    unitOfMeasure: unitOfMeasure === 'celsius' ? 'C' : 'F'
   }
 }
 

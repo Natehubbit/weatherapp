@@ -12,11 +12,11 @@ import UtilServices from '../../services/UtilService'
 const cn = cx.bind(styles)
 
 interface IWeatherCard {
-  id:number;
-  temp:number;
-  date:string;
-  activeId?:number|null;
-  onClick?:()=>void;
+  id: number
+  temp: number
+  date: string
+  activeId?: number | null
+  onClick?: () => void
 }
 
 const WeatherCard: FC<IWeatherCard> = ({
@@ -30,39 +30,41 @@ const WeatherCard: FC<IWeatherCard> = ({
   return (
     <Grid
       key={uuid()}
-      item xs={12}
-      sm={6} lg={4}
+      item
+      xs={12}
+      sm={6}
+      lg={4}
       className={cn({
         grid: true
-      })}
-    >
-        <Card
-          data-testid='weatherCard'
-          className={cn({
-            container: true,
-            grid: true,
-            active: activeId === id
-          })}
-          onClick={onClick}>
-          <CardContent className={styles.content}>
-            <div className={styles.item}>
-              <Typography className={styles.head} component='header'>
-                TEMP
-              </Typography>
-              <Typography className={styles.value} component='span'>
-                {tempVal}{unitOfMeasure}
-              </Typography>
-            </div>
-            <div className={styles.item}>
-              <Typography className={styles.head} component='header'>
-                DATE
-              </Typography>
-              <Typography className={styles.value} component='span'>
-                {UtilServices.getDate(date)}
-              </Typography>
-            </div>
-          </CardContent>
-        </Card>
+      })}>
+      <Card
+        data-testid="weatherCard"
+        className={cn({
+          container: true,
+          grid: true,
+          active: activeId === id
+        })}
+        onClick={onClick}>
+        <CardContent className={styles.content}>
+          <div className={styles.item}>
+            <Typography className={styles.head} component="header">
+              TEMP
+            </Typography>
+            <Typography className={styles.value} component="span">
+              {tempVal}
+              {unitOfMeasure}
+            </Typography>
+          </div>
+          <div className={styles.item}>
+            <Typography className={styles.head} component="header">
+              DATE
+            </Typography>
+            <Typography className={styles.value} component="span">
+              {UtilServices.getDate(date)}
+            </Typography>
+          </div>
+        </CardContent>
+      </Card>
     </Grid>
   )
 }

@@ -1,7 +1,7 @@
 import { useSelector } from '../redux/store'
 import UtilServices from '../services/UtilService'
 
-export const useWeatherData = (start?:number, end?:number) =>
+export const useWeatherData = (start?: number, end?: number) =>
   useSelector(({ weather }) => {
     const data = UtilServices.formatCardData(weather)
     const size = data.length
@@ -12,5 +12,9 @@ export const useWeatherData = (start?:number, end?:number) =>
         endOfList: end >= size
       }
     }
-    return { data: weather, size, endOfList: true }
+    return {
+      data: weather,
+      size,
+      endOfList: true
+    }
   })

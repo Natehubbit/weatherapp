@@ -1,28 +1,33 @@
 @import '../../styles/variables';
 
-.container{
-  background: rgba( 0, 0, 0, 0.25 )!important;
-  backdrop-filter: blur( 20.5px );
-  -webkit-backdrop-filter: blur( 20.5px );
+.container {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(20.5px);
+  -webkit-backdrop-filter: blur(20.5px);
   cursor: pointer;
   padding: 10px;
   margin-bottom: 25px;
   height: 500px;
-  color: $white!important;
+  color: $white !important;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;
-  p{
+  p {
     text-align: center;
   }
   .graphContainer {
-    color: $white;
-    .xAxis {
+    height: 100%;
+    width: 100%;
+    .graph {
+      min-width: 100px;
       color: $white;
-      stroke: $white;
-      fill: $white;
+      .xAxis {
+        color: $white;
+        stroke: $white;
+        fill: $white;
+      }
     }
   }
 }

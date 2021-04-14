@@ -6,10 +6,10 @@ export const { actions, ...loaderSlice } = createSlice({
   name: 'loader',
   initialState,
   reducers: {
-    loading () {
+    loading() {
       return true
     },
-    loaded () {
+    loaded() {
       return false
     }
   }
