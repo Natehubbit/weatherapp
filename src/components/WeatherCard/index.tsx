@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
 import cx from 'classnames/bind'
 import useTemp from '../../hooks/useTemp'
@@ -16,6 +16,7 @@ interface IWeatherCard {
   temp: number
   date: string
   activeId?: number | null
+  active?: boolean
   onClick?: () => void
 }
 
@@ -24,9 +25,13 @@ const WeatherCard: FC<IWeatherCard> = ({
   temp,
   date,
   activeId,
+  active,
   onClick
 }) => {
   const { tempVal, unitOfMeasure } = useTemp(temp)
+  useEffect(() => {
+    active && onClick && onClick()
+  }, [active])
   return (
     <Grid
       key={uuid()}
@@ -42,7 +47,7 @@ const WeatherCard: FC<IWeatherCard> = ({
         className={cn({
           container: true,
           grid: true,
-          active: activeId === id
+          active: activeId === id || active
         })}
         onClick={onClick}>
         <CardContent className={styles.content}>

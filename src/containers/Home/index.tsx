@@ -7,18 +7,19 @@ import RadioGroup from '../../components/RadioGroup'
 import WeatherCard from '../../components/WeatherCard'
 import styles from './style.module.scss'
 import { useWeatherData } from '../../hooks/useWeatherData'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import NavButtons from '../../components/NavButtons'
 import { WeatherInfo } from '../../types'
 import Graph from '../../components/Graph'
 import { weatherActions } from '../../redux/slices/weatherSlice'
 import { useDispatch } from '../../redux/store'
 import { Button } from '@material-ui/core'
-import { COLORS } from '../../common/colors'
+import { useMedia } from '../../hooks/useMedia'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const [start, setStart] = useState(0)
+  const { isMobile } = useMedia()
+  const [start, setStart] = useState(2)
   const [end, setEnd] = useState(3)
   const [active, setActive] = useState<number | null>(null)
   const { data, size, endOfList } = useWeatherData(start, end)
@@ -26,6 +27,15 @@ const Home = () => {
   useEffect(() => {
     dispatch(weatherActions.fetchData())
   }, [dispatch])
+
+  useEffect(() => {
+    !isMobile
+      ? setStart(0)
+      : setStart(2)
+  }, [isMobile])
+
+  // useEffect(() => {
+  // }, [start])
 
   const onRefresh = () => {
     dispatch(weatherActions.fetchData())
@@ -65,6 +75,7 @@ const Home = () => {
     }
     return setActive(id)
   }
+
   return (
     <div className={styles.container}>
       <Container>
@@ -87,7 +98,7 @@ const Home = () => {
         </Box>
         <Box paddingY={5}>
           <Grid container spacing={3} className={styles.cardList}>
-            {data.map((d: WeatherInfo) => (
+            {data.map((d: WeatherInfo, index) => (
               <WeatherCard
                 id={d.id}
                 activeId={active}
