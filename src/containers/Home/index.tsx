@@ -13,6 +13,8 @@ import { WeatherInfo } from '../../types'
 import Graph from '../../components/Graph'
 import { weatherActions } from '../../redux/slices/weatherSlice'
 import { useDispatch } from '../../redux/store'
+import { Button } from '@material-ui/core'
+import { COLORS } from '../../common/colors'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -24,6 +26,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(weatherActions.fetchData())
   }, [dispatch])
+
+  const onRefresh = () => {
+    dispatch(weatherActions.fetchData())
+  }
 
   const onNext = () => {
     setStart((s) => {
@@ -62,11 +68,14 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Container>
-        <Box display="flex" justifyContent="center" paddingY={5}>
+        <Box display="flex" justifyContent="space-between" paddingY={5}>
           <RadioGroup
             active={Object.keys(TEMPERATURE_OPTIONS)[1]}
             options={TEMPERATURE_OPTIONS}
           />
+          <Button className={styles.refreshBtn} title='Refresh' onClick={onRefresh} >
+            Refresh
+          </Button>
         </Box>
         <Box paddingY={5}>
           <NavButtons

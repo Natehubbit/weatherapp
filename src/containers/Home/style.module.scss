@@ -15,4 +15,8 @@
     display: flex;
     justify-content: flex-end;
   }
+  .refreshBtn {
+    background-color: $primary;
+    color: $white;
+  }
 }
