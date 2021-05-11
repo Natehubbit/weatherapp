@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { WeatherInfo } from '../types'
 import UtilServices from './UtilService'
+import { IMPERIAL } from '../common/constants'
 
 const URL = 'https://api.openweathermap.org/data/2.5/forecast'
 
@@ -11,14 +12,15 @@ export default class WeatherService {
         params: {
           q: 'Munich,de',
           cnt: 40,
-          APPID: process.env.REACT_APP_WEATHER_API_ID
+          APPID: process.env.REACT_APP_WEATHER_API_ID,
+          units: IMPERIAL
         }
       })
       return res.data.list.map((d: any) => {
         return {
           id: d.dt,
           dt_txt: d.dt_txt,
-          temp: UtilServices.kelvinToFahrenheit(d.main.temp),
+          temp: d.main.temp,
           weather: d.weather[0].main.toLowerCase()
         }
       })

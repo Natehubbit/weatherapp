@@ -6,6 +6,8 @@ export const TEMPERATURE_OPTIONS = {
   Fahrenheit: Fahrenheit
 }
 
+export const IMPERIAL = 'imperial'
+
 export const TEST_RESPONSE_DATA = [
   {
     id: 1618250400,
